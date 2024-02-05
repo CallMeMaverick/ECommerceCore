@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+
+# JSON
+config.json
+
+# Boost library
+boost/
+
+# CMake List
+CMakeList.txt
