@@ -17,14 +17,14 @@ public:
      * @brief Adds a product to the shopping basket.
      * @param product A constant reference to the Product to be added to the basket.
      */
-    void add_to_basket(const Product &product);
+    void add_to_basket(Product &product);
 
     /**
      * @brief Removes a product from the shopping basket by name.
      *        In case product isn't in the basket, shows an appropriate message.
      * @param productName The name of the product to be removed from the basket.
      */
-    void remove_from_basket(std::string productName);
+    void remove_from_basket(const std::string &productName);
 
     /**
      * @brief Overloaded method to remove a product from the shopping basket by ID.
