@@ -3,6 +3,7 @@
 
 #pragma once
 #include <iostream>
+#include "../../services/catalogLoader/loadCatalog.h"
 
 class Product
 {
@@ -44,6 +45,8 @@ public:
      * @return std::ostream& Reference to the output stream for chaining output operations.
      */
     friend std::ostream& operator << (std::ostream& out, Product& obj);
+
+    friend Catalog loadCatalog();
 };
 
 
