@@ -3,7 +3,9 @@
 
 #pragma once
 #include <iostream>
-#include "../../services/catalogLoader/loadCatalog.h"
+
+// forward declaration for Catalog class
+class Catalog;
 
 class Product
 {

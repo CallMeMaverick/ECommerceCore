@@ -1,9 +1,12 @@
 #ifndef ECOMMERCECORE_CATALOG_H
 #define ECOMMERCECORE_CATALOG_H
 
-#pragma once
+//#pragma once
 #include <vector>
 #include "../Product/Product.h"
+
+// forward declaration for Product class
+class Product;
 
 class Catalog
 {

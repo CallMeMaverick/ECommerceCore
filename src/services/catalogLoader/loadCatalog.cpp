@@ -3,6 +3,9 @@
 #include "fstream"
 #include "sstream"
 
+// forward declaration for Product class
+class Product;
+
 Catalog loadCatalog()
 {
     Catalog catalog;
@@ -25,6 +28,7 @@ Catalog loadCatalog()
         std::string token;
 
         getline(ss, token, ',');
+        std::cout << token << std::endl;
         product.productID = stoi(token);
 
         getline(ss, product.productName, ',');
