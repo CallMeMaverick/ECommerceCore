@@ -4,6 +4,9 @@
 #pragma once
 #include <iostream>
 
+// forward declaration for Catalog class
+class Catalog;
+
 class Product
 {
 private:
@@ -44,6 +47,8 @@ public:
      * @return std::ostream& Reference to the output stream for chaining output operations.
      */
     friend std::ostream& operator << (std::ostream& out, Product& obj);
+
+    friend Catalog loadCatalog();
 };
 
 

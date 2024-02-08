@@ -32,6 +32,9 @@
 *.app
 
 
+# Config folder
+config/
+
 # JSON
 config.json
 

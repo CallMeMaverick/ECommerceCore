@@ -15,5 +15,5 @@ std::ostream &operator << (std::ostream &out, Product &object)
     out << "Category: " << object.getProductCategory() << ", ";
     out << "Price: " << object.getProductPrice() << std::endl;
     return out;
-
 }
+
