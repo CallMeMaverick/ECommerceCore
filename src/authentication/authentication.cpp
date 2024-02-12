@@ -2,6 +2,8 @@
 #include "nlohmann/json.hpp"
 #include <iostream>
 #include "fstream"
+#include "authentication_validators/nameValidator/validateName.h"
+#include "authentication_validators/passwordValidator/validatePassword.h"
 
 using json = nlohmann::json;
 
@@ -9,6 +11,24 @@ namespace authentication
 {
     void signUp(const std::string& username, const std::string &password)
     {
+        // Validate name before proceeding
+        try {
+            validateName(username);
+        }
+        catch (std::invalid_argument& nameException) {
+            std::cout << nameException.what() << std::endl;
+            throw;
+        }
+
+        try {
+            validatePassword(password);
+        }
+        catch (std::invalid_argument& passwordException) {
+            std::cout << passwordException.what() << std::endl;
+            throw;
+        }
+
+
         // Define the file path where the user data JSON is stored.
         std::string filePath = "/Users/maverick/Desktop/ECommerceCore/ECommerceCore/data/authentication_data/auth.json";
 
@@ -36,7 +56,7 @@ namespace authentication
         }
 
         // Check if the username's first letter exists as a key, if not -> initialize it as an empty array.
-        if (!userData.contains(std::string(1, tolower(username[0]))))
+        if (!userData.contains(std::string(1, username[0])))
         {
             userData[std::string(1, username[0])] = json::array();
         }
