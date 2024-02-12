@@ -41,16 +41,12 @@ namespace authentication
         {
             try
             {
-                // Attempt to load the existing data into userData.
                 inputJson >> userData;
-
-                // Close the file after reading.
                 inputJson.close();
             }
             catch (json::parse_error& e)
             {
                 // If there's a parse error, assume the file was empty or corrupted and start with a new JSON object.
-                // std::cerr << "Warning: Failed to parse the JSON file (" << e.what() << "). Starting with a new dataset.\n";
                 userData = json::object(); // Initialize userData as an empty object.
             }
         }
