@@ -3,6 +3,7 @@
 
 #include "string"
 
+
 /**
  * The User class serves as an abstract class for users.
  * It provides interface for managing both account and basket.
@@ -10,16 +11,16 @@
 class User
 {
 private:
-    std::string nickname;  // unique user identifier
+    std::string username;  // unique user identifier
     std::string password;  // user password
 
 public:
     /**
      * @brief Constructs a new User with a given nickname and password.
-     * @param nickname The nickname for the new user.
+     * @param username The username for the new user.
      * @param password The password for the new user.
      */
-    User(const std::string &nickname, const std::string &password);
+    User(const std::string &username, const std::string &password);
 
     /**
      * @brief A pure virtual function that handles the user sign-up process.
