@@ -11,5 +11,5 @@ std::string Customer::getPassword() const { return this->password; }
 
 void Customer::signUp()
 {
-    authentication::singUp(getUsername(), getPassword());
+    authentication::signUp(getUsername(), getPassword());
 }
