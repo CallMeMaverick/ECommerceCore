@@ -3,7 +3,6 @@
 
 #include "string"
 
-
 /**
  * The User class serves as an abstract class for users.
  * It provides interface for managing both account and basket.
@@ -21,6 +20,18 @@ public:
      * @param password The password for the new user.
      */
     User(const std::string &username, const std::string &password);
+
+    /**
+     * @brief Retrieves the username of the user.
+     * @return std::string representing username
+     */
+    virtual std::string getUsername() const = 0;
+
+    /**
+     * @brief Retrieves the password of the user.
+     * @return std::string representing password
+     */
+    virtual std::string getPassword() const = 0;
 
     /**
      * @brief A pure virtual function that handles the user sign-up process.
