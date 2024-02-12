@@ -7,41 +7,50 @@ using json = nlohmann::json;
 
 namespace authentication
 {
-    void singUp(const std::string& username, const std::string &password)
+    void signUp(const std::string& username, const std::string &password)
     {
-        // Initialize map, where each key is a char and each value is JSON array.
-        std::map<char, json> userMap;
-        // Add the new user's username and password to the map.
-        // The username's first character is used as the key, and the user's data is pushed into a JSON array.
-        userMap[username[0]].push_back({ { "username", username }, { "password", password } });
+        // Define the file path where the user data JSON is stored.
+        std::string filePath = "/Users/maverick/Desktop/ECommerceCore/ECommerceCore/data/authentication_data/auth.json";
 
         // JSON object to store all user data.
         json userData;
 
-        // Iterate over the map to transfer users grouped by their first letter into the userData JSON object.
-        /*
-          "first_letter": [
-                {
-                    "password": "...",
-                    "username": "..."
-                }
-            ]
-         */
-        for (const auto &kvp : userMap)
+        // Try to open the existing JSON file.
+        std::ifstream inputJson(filePath);
+        if (inputJson.is_open())
         {
-            std::string key(1, kvp.first);  // <-- Convert the char key to a string.
-            userData[key] = kvp.second;          // <-- Assign the JSON array to the corresponding key in userData.
+            try
+            {
+                // Attempt to load the existing data into userData.
+                inputJson >> userData;
+
+                // Close the file after reading.
+                inputJson.close();
+            }
+            catch (json::parse_error& e)
+            {
+                // If there's a parse error, assume the file was empty or corrupted and start with a new JSON object.
+                // std::cerr << "Warning: Failed to parse the JSON file (" << e.what() << "). Starting with a new dataset.\n";
+                userData = json::object(); // Initialize userData as an empty object.
+            }
         }
 
-        // Define the file path where the user data JSON will be saved.
-        // Note: The absolute path is used here, which is not flexible or portable.
-        std::ofstream openJson("/Users/maverick/Desktop/ECommerceCore/ECommerceCore/data/authentication_data/auth.json");
-        if (!openJson.is_open())
-            throw std::runtime_error("Could not open a file");
-        else
+        // Check if the username's first letter exists as a key, if not -> initialize it as an empty array.
+        if (!userData.contains(std::string(1, tolower(username[0]))))
         {
-            openJson << userData.dump(4);
-            openJson.close();
+            userData[std::string(1, username[0])] = json::array();
         }
+
+        // Add the new user's username and password to the userData.
+        userData[std::string(1, username[0])].push_back({ { "username", username }, { "password", password } });
+
+        // Open the file in write mode to save the updated userData.
+        std::ofstream outputJson(filePath);
+        if (!outputJson.is_open())
+            throw std::runtime_error("Could not open file for writing");
+
+        // Write the updated userData back to the file.
+        outputJson << userData.dump(4);
+        outputJson.close();
     }
 }
