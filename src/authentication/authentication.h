@@ -18,7 +18,7 @@ namespace authentication
      * @param username The username of the user attempting to log in.
      * @param password The password provided by the user for login.
      */
-    void logIn(const std::string &username, const std::string &password);
+    bool logIn(const std::string &username, const std::string &password);
 }
 
 

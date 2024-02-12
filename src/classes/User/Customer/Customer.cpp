@@ -13,3 +13,8 @@ void Customer::signUp()
 {
     authentication::signUp(getUsername(), getPassword());
 }
+
+void Customer::logIn()
+{
+    authentication::logIn(getUsername(), getPassword());
+}

@@ -69,4 +69,57 @@ namespace authentication
         outputJson << userData.dump(4);
         outputJson.close();
     }
+
+    bool logIn(const std::string &username, const std::string &password)
+    {
+        // Validate both username and password
+        try {
+            validateName(username);
+            validatePassword(password);
+        }
+        catch (const std::invalid_argument& exception) {
+            // Here it states that user doesn't exist because if, when signing up,
+            // user didn't pass the validation, they could not register,
+            // so invalid usernames or passwords are not in auth.json
+            throw std::invalid_argument("User does not exist");
+        }
+
+        std::ifstream jsonFileRead("/Users/maverick/Desktop/ECommerceCore/ECommerceCore/data/authentication_data/auth.json");
+        json readData;
+        if (jsonFileRead.is_open())
+        {
+            try {
+                jsonFileRead >> readData;
+                jsonFileRead.close();
+            }
+            catch (json::parse_error& e) {
+                std::cout << e.what() << std::endl;
+                throw;
+            }
+
+            // If data has been read, proceed by iterating over JSON object
+            for (auto& [key, user] : readData.items())
+            {
+                // Compare the key (which is the letter we group users by),
+                // with the first letter of given username
+                if (key[0] == username[0])
+                {
+                    // If found, now iterate over JSON object,
+                    // and compare username and password given with those object has
+                    for (auto& userData : user)
+                    {
+                        if (userData["username"] == username && userData["password"] == password)
+                        {
+                            std::cout << "Found" << std::endl;
+                            return true;  // <-- return true if user has been found
+                        }
+                    }
+
+                    std::cout << "User hasn't been found" << std::endl;
+                    return false;  // <-- return false if user hasn't been found
+                }
+            }
+        }
+        return false;  // <-- return false if user hasn't been found
+    }
 }
