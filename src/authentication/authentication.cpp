@@ -122,4 +122,69 @@ namespace authentication
         }
         return false;  // <-- return false if user hasn't been found
     }
+
+    bool deleteAccount(const std::string &username, const std::string &password)
+    {
+        // Validate both username and password
+        try {
+            validateName(username);
+            validatePassword(password);
+        }
+        catch (const std::invalid_argument& exp) {
+            throw std::invalid_argument("User does not exist");
+        }
+
+        std::ifstream jsonFile("/Users/maverick/Desktop/ECommerceCore/ECommerceCore/data/authentication_data/auth.json");
+        json data;
+
+        if (jsonFile.is_open())
+        {
+            bool deleted = false;
+
+            try {
+                jsonFile >> data;
+                jsonFile.close();
+            }
+            catch (json::parse_error& exp) {
+                std::cout << exp.what() << std::endl;
+                throw;
+            }
+
+
+            for (auto& [key, user] : data.items())
+            {
+                if (key[0] == username[0])
+                {
+                    // Traverse the array with iterator
+                    for (auto it = user.begin(); it != user.end(); ++it)
+                    {
+                        if ((*it)["username"] == username && (*it)["password"] == password)
+                        {
+                            // Removes the element 'it' points to
+                            user.erase(it);
+                            deleted = true;
+                            break;
+                        }
+                    }
+                    if (deleted) break;
+                }
+            }
+
+            // Update JSON file
+            if (deleted)
+            {
+                std::ofstream outFile("/Users/maverick/Desktop/ECommerceCore/ECommerceCore/data/authentication_data/auth.json");
+                if (!outFile.is_open()) {
+                    std::cerr << "Failed to open the JSON file for writing." << std::endl;
+                    return false;
+                }
+                outFile << data.dump(4);
+                outFile.close();
+                return true;
+            }
+            return false;
+        }
+
+        return false;
+    }
 }

@@ -19,6 +19,13 @@ namespace authentication
      * @param password The password provided by the user for login.
      */
     bool logIn(const std::string &username, const std::string &password);
+
+    /**
+     * @brief Deletes user's account from JSON by providing username and password
+     * @param username The username of the user attempting to delete his account.
+     * @param password The password provided by the user for deleting his account.
+     */
+    bool deleteAccount(const std::string &username, const std::string &password);
 }
 
 
