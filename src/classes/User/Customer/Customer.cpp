@@ -18,3 +18,8 @@ void Customer::logIn()
 {
     authentication::logIn(getUsername(), getPassword());
 }
+
+void Customer::deleteAccount()
+{
+    authentication::deleteAccount(getUsername(), getPassword());
+}

@@ -29,12 +29,12 @@ public:
     void logIn() override;
 
     void deleteAccount() override;
-
-    void addToBasket()override;
-
-    void removeFromBasket() override;
-
-    void getData() const override;
+//
+//    void addToBasket()override;
+//
+//    void removeFromBasket() override;
+//
+//    void getData() const override;
 };
 
 

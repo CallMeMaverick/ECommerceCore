@@ -50,25 +50,25 @@ public:
      * Implementations removes all user data and associated records from the system.
      */
     virtual void deleteAccount() = 0;
-
-
-    /**
-     * @brief A pure virtual function for adding items to the user's shopping basket.
-     * Implementations allows a user to add an item to their basket using Basket class.
-     */
-    virtual void addToBasket() = 0;
-
-    /**
-     * @brief A pure virtual function for removing items from the user's shopping basket.
-     * Implementations should allow a user to remove an item from their basket using Basket class.
-     */
-    virtual void removeFromBasket() = 0;
-
-    /**
-     * A pure virtual function that provides user data.
-     * Implementations returns the user's data in a read-only format.
-     */
-    virtual void getData() const = 0;
+//
+//
+//    /**
+//     * @brief A pure virtual function for adding items to the user's shopping basket.
+//     * Implementations allows a user to add an item to their basket using Basket class.
+//     */
+//    virtual void addToBasket() = 0;
+//
+//    /**
+//     * @brief A pure virtual function for removing items from the user's shopping basket.
+//     * Implementations should allow a user to remove an item from their basket using Basket class.
+//     */
+//    virtual void removeFromBasket() = 0;
+//
+//    /**
+//     * A pure virtual function that provides user data.
+//     * Implementations returns the user's data in a read-only format.
+//     */
+//    virtual void getData() const = 0;
 };
 
 
