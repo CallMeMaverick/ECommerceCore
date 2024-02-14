@@ -53,5 +53,7 @@ Catalog loadCatalog()
         catalog.push_to_database(product);
     }
 
+    auto productsSorted = catalog.sortByCategory();
+
     return catalog;
 }
