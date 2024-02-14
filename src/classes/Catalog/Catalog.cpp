@@ -14,6 +14,42 @@ void Catalog::print_catalog()
     }
 }
 
+void Catalog::print_catalog(const std::string &categoryToPrint)
+{
+    // Convert to capitalized string
+    std::string lowercaseInput;
+    for (size_t i = 0; i < categoryToPrint.size(); i++)
+    {
+        char c = categoryToPrint[i];
+
+        if (i == 0)
+        {
+            if (!(c >= 'A' && c <= 'Z'))
+                lowercaseInput += (char)(c - 32);
+            else
+                lowercaseInput += c;
+        }
+        else
+        {
+            if ((c >= 'A' && c <= 'Z'))
+                lowercaseInput += (char)(c + 32);
+            else
+                lowercaseInput += c;
+        }
+    }
+
+    for (auto& category : this->sortByCategory()) {
+        if (category.first == lowercaseInput)
+        {
+            for (auto& product : category.second) {
+                std::cout << "Product ID: " << product.getProductID()
+                          << ", Name: " << product.getProductName()
+                          << ", Price: $" << product.getProductPrice() << std::endl;
+            }
+        }
+    }
+}
+
 Product& Catalog::operator[](int index)
 {
     if (index < 0) return catalog[0];
