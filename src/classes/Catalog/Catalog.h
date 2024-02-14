@@ -29,7 +29,7 @@ public:
     /**
      * @brief Displays items according to passed category
      */
-    void print_catalog(const std::string& category);
+    void print_catalog(const std::string& categoryToPrint);
 
     /**
      * @brief Overloaded [] operator, provides access to a product in the catalog by index.
