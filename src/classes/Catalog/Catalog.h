@@ -27,6 +27,11 @@ public:
     void print_catalog();
 
     /**
+     * @brief Displays items according to passed category
+     */
+    void print_catalog(const std::string& category);
+
+    /**
      * @brief Overloaded [] operator, provides access to a product in the catalog by index.
      *        If index < 0, returns the first object in database.
      *        If index > database.size() - 1, return the last element in database
