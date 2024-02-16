@@ -70,3 +70,16 @@ std::map<std::string, std::vector<Product>> Catalog::sortByCategory()
     }
     return productsByCategory;
 }
+
+std::map<std::string, std::vector<Product>> Catalog::sortByCategory(const std::string& category)
+{
+    // Create a map to store products categorized by their category name.
+    std::map<std::string, std::vector<Product>> currentCategorized;
+    // Traverse the entire catalog vector that contains the initial set of products.
+    for (auto& product : catalog) {
+        if (product.getProductCategory() == category)
+            currentCategorized[product.getProductCategory()].push_back(product);
+
+    }
+    return currentCategorized;
+}
