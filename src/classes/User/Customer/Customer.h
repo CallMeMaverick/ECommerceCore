@@ -3,6 +3,7 @@
 
 #include <string>
 #include "../User.h"
+#include "../../Basket/Basket.h"
 
 // Forward declaration of User class to avoid circular dependency
 class User;
@@ -17,6 +18,8 @@ class Customer : public User
 private:
     std::string username;
     std::string password;
+    Basket basket;
+
 public:
     Customer(const std::string &username, const std::string &password);
 
@@ -29,9 +32,11 @@ public:
     void logIn() override;
 
     void deleteAccount() override;
-//
-//    void addToBasket()override;
-//
+
+    void addToBasket(Product& product) override;
+
+    void printBasket() override;
+
 //    void removeFromBasket() override;
 //
 //    void getData() const override;
