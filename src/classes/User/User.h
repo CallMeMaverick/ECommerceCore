@@ -64,14 +64,14 @@ public:
      * Implementations allows a user to see their basket populated with products.
      */
     virtual void printBasket() = 0;
-//
-//    /**
-//     * @brief A pure virtual function for removing items from the user's shopping basket.
-//     * Implementations should allow a user to remove an item from their basket using Basket class.
-//     */
-//    virtual void removeFromBasket() = 0;
-//
-//    /**
+
+    /**
+     * @brief A pure virtual function for removing items from the user's shopping basket.
+     * Implementations should allow a user to remove an item from their basket using Basket class.
+     */
+    virtual void removeFromBasket(uint16_t ID) = 0;
+
+    /**
 //     * A pure virtual function that provides user data.
 //     * Implementations returns the user's data in a read-only format.
 //     */

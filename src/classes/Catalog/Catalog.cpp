@@ -79,7 +79,6 @@ std::map<std::string, std::vector<Product>> Catalog::sortByCategory(const std::s
     for (auto& product : catalog) {
         if (product.getProductCategory() == category)
             currentCategorized[product.getProductCategory()].push_back(product);
-
     }
     return currentCategorized;
 }

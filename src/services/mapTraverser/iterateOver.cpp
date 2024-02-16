@@ -2,7 +2,6 @@
 #include <iostream>
 #include <map>
 #include <vector>
-#include "../../../src/classes/Product/Product.h"
 
 void iterateOver(std::map<std::string, std::vector<Product>>& map)
 {
