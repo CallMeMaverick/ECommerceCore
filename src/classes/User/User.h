@@ -2,6 +2,7 @@
 #define ECOMMERCECORE_USER_H
 
 #include "string"
+#include "../Product/Product.h"
 
 /**
  * The User class serves as an abstract class for users.
@@ -50,13 +51,19 @@ public:
      * Implementations removes all user data and associated records from the system.
      */
     virtual void deleteAccount() = 0;
-//
-//
-//    /**
-//     * @brief A pure virtual function for adding items to the user's shopping basket.
-//     * Implementations allows a user to add an item to their basket using Basket class.
-//     */
-//    virtual void addToBasket() = 0;
+
+
+    /**
+     * @brief A pure virtual function for adding items to the user's shopping basket.
+     * Implementations allows a user to add an item to their basket using Basket class.
+     */
+    virtual void addToBasket(Product& product) = 0;
+
+    /**
+     * @brief A pure virtual function for printing basket.
+     * Implementations allows a user to see their basket populated with products.
+     */
+    virtual void printBasket() = 0;
 //
 //    /**
 //     * @brief A pure virtual function for removing items from the user's shopping basket.
