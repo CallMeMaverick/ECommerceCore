@@ -9,23 +9,23 @@ using json = nlohmann::json;
 
 namespace authentication
 {
-    void signUp(const std::string& username, const std::string &password)
+    bool signUp(const std::string& username, const std::string &password)
     {
         // Validate name before proceeding
         try {
             validateName(username);
         }
         catch (std::invalid_argument& nameException) {
-            std::cout << nameException.what() << std::endl;
-            throw;
+//            std::cout << nameException.what() << std::endl;
+            throw nameException;
         }
 
         try {
             validatePassword(password);
         }
         catch (std::invalid_argument& passwordException) {
-            std::cout << passwordException.what() << std::endl;
-            throw;
+//            std::cout << passwordException.what() << std::endl;
+            throw passwordException;
         }
 
 
@@ -48,6 +48,7 @@ namespace authentication
             {
                 // If there's a parse error, assume the file was empty or corrupted and start with a new JSON object.
                 userData = json::object(); // Initialize userData as an empty object.
+                return false;
             }
         }
 
@@ -63,11 +64,16 @@ namespace authentication
         // Open the file in write mode to save the updated userData.
         std::ofstream outputJson(filePath);
         if (!outputJson.is_open())
+        {
             throw std::runtime_error("Could not open file for writing");
+        }
+
 
         // Write the updated userData back to the file.
         outputJson << userData.dump(4);
         outputJson.close();
+
+        return true;
     }
 
     bool logIn(const std::string &username, const std::string &password)
@@ -110,7 +116,7 @@ namespace authentication
                     {
                         if (userData["username"] == username && userData["password"] == password)
                         {
-                            std::cout << "Found" << std::endl;
+//                            std::cout << "Successfully logged in" << std::endl;
                             return true;  // <-- return true if user has been found
                         }
                     }
