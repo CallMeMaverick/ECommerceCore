@@ -16,7 +16,6 @@ namespace authentication
             validateName(username);
         }
         catch (std::invalid_argument& nameException) {
-//            std::cout << nameException.what() << std::endl;
             throw nameException;
         }
 
@@ -24,7 +23,6 @@ namespace authentication
             validatePassword(password);
         }
         catch (std::invalid_argument& passwordException) {
-//            std::cout << passwordException.what() << std::endl;
             throw passwordException;
         }
 
@@ -46,9 +44,7 @@ namespace authentication
             }
             catch (json::parse_error& e)
             {
-                // If there's a parse error, assume the file was empty or corrupted and start with a new JSON object.
                 userData = json::object(); // Initialize userData as an empty object.
-                return false;
             }
         }
 
@@ -116,7 +112,6 @@ namespace authentication
                     {
                         if (userData["username"] == username && userData["password"] == password)
                         {
-//                            std::cout << "Successfully logged in" << std::endl;
                             return true;  // <-- return true if user has been found
                         }
                     }
