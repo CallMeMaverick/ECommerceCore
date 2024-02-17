@@ -47,6 +47,14 @@ public:
      *         the returned map will be empty.
      */
     std::map<std::string, std::vector<Product>> sortByCategory();
+
+    /**
+     * @brief Overloaded: Organizes and returns products sorted by their categories.
+     * @return A map with categor name as key and vector of Product objects as value. Vector contains
+     *         all products belonging to the corresponding category key. If the catalog contains no products,
+     *         the returned map will be empty.
+     */
+    std::map<std::string, std::vector<Product>> sortByCategory(const std::string& category);
 };
 
 

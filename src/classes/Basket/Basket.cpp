@@ -8,20 +8,6 @@ void Basket::add_to_basket(Product &product)
     amountToPay += product.getProductPrice(); // and add it price
 }
 
-void Basket::remove_from_basket(const std::string &productName)
-{
-    for (int i = 0; i < basket.size(); i++)
-    {
-        if (basket[i].getProductName() == productName) // Find the product
-        {
-            basket.erase(basket.begin() + i);  // Delete it from vector
-            return;                                    // Immediately stop the execution
-        }
-    }
-
-    // Message in case product hasn't been found
-    std::cerr << "Product with such a name hasn't been found" << std::endl;
-}
 
 void Basket::remove_from_basket(uint16_t productID)
 {

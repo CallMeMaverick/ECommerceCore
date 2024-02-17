@@ -23,3 +23,18 @@ void Customer::deleteAccount()
 {
     authentication::deleteAccount(getUsername(), getPassword());
 }
+
+void Customer::addToBasket(Product& product)
+{
+    basket.add_to_basket(product);
+}
+
+void Customer::printBasket()
+{
+    basket.view_basket();
+}
+
+void Customer::removeFromBasket(uint16_t ID)
+{
+    basket.remove_from_basket(ID);
+}
