@@ -38,3 +38,10 @@ void Customer::removeFromBasket(uint16_t ID)
 {
     basket.remove_from_basket(ID);
 }
+
+void Customer::getData() const
+{
+    std::cout << "username: " << username << std::endl;
+    std::cout << "password: " << password << std::endl;
+    std::cout << "basket address: " << &basket << std::endl;
+}

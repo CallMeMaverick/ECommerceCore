@@ -72,10 +72,10 @@ public:
     virtual void removeFromBasket(uint16_t ID) = 0;
 
     /**
-//     * A pure virtual function that provides user data.
-//     * Implementations returns the user's data in a read-only format.
-//     */
-//    virtual void getData() const = 0;
+     * A pure virtual function that provides user data.
+     * Implementations returns the user's data in a read-only format.
+     */
+    virtual void getData() const = 0;
 };
 
 
