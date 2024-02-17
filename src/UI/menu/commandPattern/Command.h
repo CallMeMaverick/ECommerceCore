@@ -1,6 +1,7 @@
 #ifndef ECOMMERCECORE_COMMAND_H
 #define ECOMMERCECORE_COMMAND_H
 
+#pragma once
 
 /**
  * The Command class is an abstract base class that defines a common interface
