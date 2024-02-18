@@ -1,6 +1,27 @@
 #ifndef ECOMMERCECORE_STARTAUTHENTICATION_H
 #define ECOMMERCECORE_STARTAUTHENTICATION_H
 
+#include <iostream>
+#include <optional>
+#include "../../../../classes/User/Customer/Customer.h"
+
+/**
+ * @struct AuthenticationResult
+ * @brief Represents the results of authentication attempt
+ *
+ * This structure is used to encapsulate the outcome of an authentication process,
+ * including whether the authentication was successful and, if so, an instance of
+ * the authenticated Customer. It is designed to provide a convenient way to return
+ * both the status of the authentication and the authenticated user's information
+ * from functions or methods that perform authentication.
+ *
+ * @note This structure uses std::optional to represent the Customer instance.
+ */
+struct AuthenticationResult {
+    bool result;                        // <-- either true of false (success / failure)
+    std::optional<Customer> customer;   // <-- Customer object
+};
+
 /**
  * @class startAuthentication
  * @brief Handles the authentication process for the application.
@@ -21,7 +42,7 @@ public:
      * could be due to invalid credentials, user cancellation, or other errors during the
      * authentication process.
      */
-    static bool execute();
+    static AuthenticationResult execute();
 
     /**
      * @brief Destructor for the startAuthentication class.
