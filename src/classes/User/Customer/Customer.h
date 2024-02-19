@@ -40,6 +40,8 @@ public:
     void removeFromBasket(uint16_t ID) override;
 
     void getData() const override;
+
+    Basket* getBasketAddress();
 };
 
 

@@ -45,3 +45,8 @@ void Customer::getData() const
     std::cout << "password: " << password << std::endl;
     std::cout << "basket address: " << &basket << std::endl;
 }
+
+Basket* Customer::getBasketAddress()
+{
+    return &basket;
+}
