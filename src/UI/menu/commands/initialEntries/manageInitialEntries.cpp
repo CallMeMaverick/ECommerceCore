@@ -8,6 +8,7 @@ int manageInitialEntries::execute()
 {
     uint16_t initialEntry;
 
+    std::cout << std::endl;
     std::cout << BLUE_COLOR << BOLD_TEXT << "1. " << RESET_COLOR << RESET_COLOR << "Shop" << std::endl;
     std::cout << BLUE_COLOR << BOLD_TEXT << "2. " << RESET_COLOR << RESET_COLOR << "Manage account" << std::endl;
     std::cout << "==> ";

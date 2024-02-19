@@ -37,7 +37,7 @@ AuthenticationResult startAuthentication::execute()
         {
             // call logIn function from authentication namespace
             if (authentication::logIn(username, password))
-                std::cout << GREEN_COLOR <<  "Successfully logged in" << RESET_COLOR << std::endl;
+                std::cout << GREEN_COLOR << BOLD_TEXT <<  "\nSuccessfully logged in\n" << RESET_COLOR << RESET_COLOR << std::endl;
             else
                 return { false, {} };
 
@@ -80,7 +80,7 @@ AuthenticationResult startAuthentication::execute()
         {
             // call signUp function from authentication namespace
             if (authentication::signUp(username, password))
-                std::cout << GREEN_COLOR <<  "Successfully signed up" << RESET_COLOR << std::endl;
+                std::cout << GREEN_COLOR << BOLD_TEXT <<  "\nSuccessfully signed up\n" << RESET_COLOR << RESET_COLOR << std::endl;
             else
                 return { false, {} };
 
