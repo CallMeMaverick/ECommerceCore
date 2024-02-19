@@ -38,6 +38,8 @@ AuthenticationResult startAuthentication::execute()
             // call logIn function from authentication namespace
             if (authentication::logIn(username, password))
                 std::cout << GREEN_COLOR <<  "Successfully logged in" << RESET_COLOR << std::endl;
+            else
+                return { false, {} };
 
             Customer customer = { username, password };
             // if exception hasn't yet been thrown, return true and stop the executing
@@ -79,6 +81,8 @@ AuthenticationResult startAuthentication::execute()
             // call signUp function from authentication namespace
             if (authentication::signUp(username, password))
                 std::cout << GREEN_COLOR <<  "Successfully signed up" << RESET_COLOR << std::endl;
+            else
+                return { false, {} };
 
             Customer customer = { username, password };
             // if exception hasn't yet been thrown, return true and stop the executing
