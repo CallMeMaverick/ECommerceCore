@@ -36,6 +36,8 @@ public:
      * @return The total cost of all products in the basket as a double.
      */
     static double get_overall_amount_to_pay();
+
+    int getBasketSize() const;
 };
 
 
