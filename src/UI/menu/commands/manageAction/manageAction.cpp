@@ -19,7 +19,7 @@ void manageAction::execute(Customer& customer, std::map<std::string, std::vector
         std::cin >> action;
     }
 
-    if      (action == 1) { iterateOver(mapped); addItem(customer, mapped, currentCategory); }
+    if      (action == 1) { addItem(customer, mapped, currentCategory); customer.printBasket(); }
     else if (action == 2) { customer.printBasket(); deleteItem(customer); }
     else if (action == 3) { return; }
 
@@ -35,7 +35,6 @@ void manageAction::addItem(Customer &customer, std::map<std::string, std::vector
     int index;
     std::cout << "\nNumber of item in list to add: ";
     std::cin >> index;
-
 
 
     while (index < 1 || index > vectorSize)
@@ -56,8 +55,9 @@ void manageAction::deleteItem(Customer &customer)
     std::cout << "Enter ID of item to delete: ";
     std::cin >> ID;
 
-    customer.removeFromBasket(ID);
-    std::cout << MAGENTA_COLOR << BOLD_TEXT << "\nItem has been successfully deleted\n" << RESET_COLOR << RESET_COLOR << std::endl;
+    if (customer.removeFromBasket(ID))
+        std::cout << MAGENTA_COLOR << BOLD_TEXT << "\nItem has been successfully deleted\n" << RESET_COLOR << RESET_COLOR << std::endl;
+
     customer.printBasket();
 
 }
