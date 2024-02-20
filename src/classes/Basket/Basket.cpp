@@ -31,8 +31,20 @@ void Basket::view_basket()
     for (int i = 0; i < basket.size(); i++)
     {
         std::cout << i + 1 << ") ";
-        std::cout << "Name: " << basket[i].getProductName() << ", ";
+        std::cout << "Name: " << basket[i].getProductName()  << ", ";
         std::cout << "ID: " << basket[i].getProductID() << ", ";
+        std::cout << "Category: " << basket[i].getProductCategory() << ", ";
+        std::cout << "Price: " << basket[i].getProductPrice() << std::endl;
+    }
+}
+
+void Basket::view_basket_for_removing()
+{
+    for (int i = 0; i < basket.size(); i++)
+    {
+        std::cout << RED_COLOR << BOLD_TEXT << i + 1 << ") " << RESET_COLOR << RESET_COLOR;
+        std::cout << "Name: " << basket[i].getProductName()  << ", ";
+        std::cout << RED_COLOR << BOLD_TEXT << "ID: " << RESET_COLOR << RESET_COLOR << basket[i].getProductID() << ", ";
         std::cout << "Category: " << basket[i].getProductCategory() << ", ";
         std::cout << "Price: " << basket[i].getProductPrice() << std::endl;
     }

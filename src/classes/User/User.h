@@ -50,7 +50,7 @@ public:
      * @brief A pure virtual function that allows a user to delete their account.
      * Implementations removes all user data and associated records from the system.
      */
-    virtual void deleteAccount() = 0;
+    virtual bool deleteAccount() = 0;
 
 
     /**
@@ -64,6 +64,12 @@ public:
      * Implementations allows a user to see their basket populated with products.
      */
     virtual void printBasket() = 0;
+
+    /**
+     * @brief A pure virtual function for printing basket in a styled way.
+     * Implementations allows a user to see their basket populated with products in a styled way.
+     */
+    virtual void printBasketStyled() = 0;
 
     /**
      * @brief A pure virtual function for removing items from the user's shopping basket.

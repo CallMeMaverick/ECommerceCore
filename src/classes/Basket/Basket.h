@@ -32,6 +32,11 @@ public:
     void view_basket();
 
     /**
+     * @brief Displays the contents of the shopping basket in a styled way.
+     */
+    void view_basket_for_removing();
+
+    /**
      * @brief Calculates the total cost of the items in the shopping basket.
      * @return The total cost of all products in the basket as a double.
      */

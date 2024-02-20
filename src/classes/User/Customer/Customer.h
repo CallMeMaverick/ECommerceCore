@@ -31,11 +31,13 @@ public:
 
     void logIn() override;
 
-    void deleteAccount() override;
+    bool deleteAccount() override;
 
     void addToBasket(Product& product) override;
 
     void printBasket() override;
+
+    void printBasketStyled() override;
 
     bool removeFromBasket(uint16_t ID) override;
 

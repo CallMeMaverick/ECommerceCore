@@ -20,9 +20,9 @@ void Customer::logIn()
     authentication::logIn(getUsername(), getPassword());
 }
 
-void Customer::deleteAccount()
+bool Customer::deleteAccount()
 {
-    authentication::deleteAccount(getUsername(), getPassword());
+    return authentication::deleteAccount(getUsername(), getPassword());
 }
 
 void Customer::addToBasket(Product& product)
@@ -33,6 +33,11 @@ void Customer::addToBasket(Product& product)
 void Customer::printBasket()
 {
     basket.view_basket();
+}
+
+void Customer::printBasketStyled()
+{
+    basket.view_basket_for_removing();
 }
 
 bool Customer::removeFromBasket(uint16_t ID)
