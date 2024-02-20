@@ -80,7 +80,7 @@ AuthenticationResult startAuthentication::execute()
         {
             // call signUp function from authentication namespace
             if (authentication::signUp(username, password))
-                std::cout << GREEN_COLOR << BOLD_TEXT <<  "\nSuccessfully signed up\n" << RESET_COLOR << RESET_COLOR << std::endl;
+                std::cout << GREEN_COLOR << BOLD_TEXT <<  "\nSuccessfully signed up" << RESET_COLOR << RESET_COLOR << std::endl;
             else
                 return { false, {} };
 

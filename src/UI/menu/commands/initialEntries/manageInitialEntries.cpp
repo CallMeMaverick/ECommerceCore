@@ -46,9 +46,10 @@ void manageInitialEntries::manageBasket(Customer &customer)
     {
         uint16_t basketOption;
 
-        std::cout << BLUE_COLOR << BOLD_TEXT << "1. " << RESET_COLOR << RESET_COLOR << "Remove item" << std::endl;
+        std::cout << BLUE_COLOR << BOLD_TEXT << "\n1. " << RESET_COLOR << RESET_COLOR << "Remove item" << std::endl;
         std::cout << BLUE_COLOR << BOLD_TEXT << "2. " << RESET_COLOR << RESET_COLOR << "Get basket's address" << std::endl;
         std::cout << BLUE_COLOR << BOLD_TEXT << "3. " << RESET_COLOR << RESET_COLOR << "Leave the section" << std::endl;
+        std::cout << "==> ";
         std::cin >> basketOption;
 
         while (basketOption < 1 || basketOption > 3)
@@ -59,11 +60,11 @@ void manageInitialEntries::manageBasket(Customer &customer)
 
         if (basketOption == 1)
         {
-            customer.printBasket();
+            customer.printBasketStyled();
             manageAction::deleteItem(customer);
         }
         else if (basketOption == 2)
-            std::cout << CYAN_COLOR << "Basket's address --> " << RESET_COLOR << customer.getBasketAddress() << std::endl;
+            std::cout << CYAN_COLOR << "\nBasket's address --> " << RESET_COLOR << customer.getBasketAddress() << std::endl;
         else if (basketOption == 3)
             return;
 

@@ -6,7 +6,7 @@ std::string shop::execute()
 {
     uint16_t categoryChosen;
 
-    std::cout << BLUE_COLOR << BOLD_TEXT << "1. " << RESET_COLOR << RESET_COLOR << "Books" << std::endl;
+    std::cout << BLUE_COLOR << BOLD_TEXT << "\n1. " << RESET_COLOR << RESET_COLOR << "Books" << std::endl;
     std::cout << BLUE_COLOR << BOLD_TEXT << "2. " << RESET_COLOR << RESET_COLOR << "Toys" << std::endl;
     std::cout << BLUE_COLOR << BOLD_TEXT << "3. " << RESET_COLOR << RESET_COLOR << "Clothing" << std::endl;
     std::cout << BLUE_COLOR << BOLD_TEXT << "4. " << RESET_COLOR << RESET_COLOR << "Groceries" << std::endl;

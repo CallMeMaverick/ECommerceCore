@@ -63,8 +63,7 @@ void manageAction::deleteItem(Customer &customer)
     std::cin >> ID;
 
     if (customer.removeFromBasket(ID))
-        std::cout << MAGENTA_COLOR << BOLD_TEXT << "\nItem has been successfully deleted\n" << RESET_COLOR << RESET_COLOR << std::endl;
+        std::cout << MAGENTA_COLOR << BOLD_TEXT << "\nItem has been successfully deleted" << RESET_COLOR << RESET_COLOR << std::endl;
 
     customer.printBasket();
-
 }
