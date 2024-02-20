@@ -1,6 +1,7 @@
 #include "manageAction.h"
 #include "../../../../../include/colorCodes/colorCodes.h"
 #include "../../../../services/getFromMap/getFromMap.h"
+#include "../../../../services/mapTraverser/iterateOver.h"
 
 void manageAction::execute(Customer& customer, std::map<std::string, std::vector<Product>>& mapped, const std::string& currentCategory)
 {
@@ -18,8 +19,8 @@ void manageAction::execute(Customer& customer, std::map<std::string, std::vector
         std::cin >> action;
     }
 
-    if (action == 1)      { addItem(customer, mapped, currentCategory); }
-    else if (action == 2) { deleteItem(customer); }
+    if      (action == 1) { iterateOver(mapped); addItem(customer, mapped, currentCategory); }
+    else if (action == 2) { customer.printBasket(); deleteItem(customer); }
     else if (action == 3) { return; }
 
 }
@@ -57,5 +58,6 @@ void manageAction::deleteItem(Customer &customer)
 
     customer.removeFromBasket(ID);
     std::cout << MAGENTA_COLOR << BOLD_TEXT << "\nItem has been successfully deleted\n" << RESET_COLOR << RESET_COLOR << std::endl;
+    customer.printBasket();
 
 }

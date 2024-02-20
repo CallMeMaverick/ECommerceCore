@@ -37,3 +37,5 @@ void Basket::view_basket()
 }
 
 double Basket::get_overall_amount_to_pay() { return amountToPay; }
+
+int Basket::getBasketSize() const { return basket.size(); }
