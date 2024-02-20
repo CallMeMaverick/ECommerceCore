@@ -47,6 +47,17 @@ public:
     static std::string manageOptionShop();
 
     /**
+     * @brief Manages basket options for the given customer.
+     *
+     * This method provides interface for managing the basket of a user.
+     * User can either remove item from the basket, and get basket's ID.
+     * Actions taken within this method affect the provided Customer object directly.
+     *
+     * @param customer
+     */
+    static void manageBasket(Customer& customer);
+
+    /**
      * @brief Manages account options for the given customer.
      *
      * This method provides the user with account management options such as
