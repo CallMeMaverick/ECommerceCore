@@ -68,7 +68,7 @@ public:
      *        management options should be managed. This object may be modified
      *        based on the user's selections.
      */
-    static void manageOptionManageAccount(Customer& customer);
+    static void manageOptionManageAccount(Customer& customer, bool& flag);
 
     /* Prevent instantiation of the class */
     manageInitialEntries() = delete;
