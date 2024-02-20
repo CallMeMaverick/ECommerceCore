@@ -1,7 +1,7 @@
 #include "manageAccount.h"
 #include "../../../../../include/colorCodes/colorCodes.h"
 
-void manageAccount::execute(Customer& customer)
+void manageAccount::execute(Customer& customer, bool& flag)
 {
     uint16_t manageAccountOptionChosen;
 
@@ -13,10 +13,12 @@ void manageAccount::execute(Customer& customer)
 
     switch (manageAccountOptionChosen) {
         case 1:
-            std::cout << CYAN_COLOR << BOLD_TEXT << "Logging out" << RESET_COLOR << RESET_COLOR << std::endl;
-            return;
+            std::cout << CYAN_COLOR << BOLD_TEXT << "\nLogging out" << RESET_COLOR << RESET_COLOR << std::endl;
+            flag = false;
+            break;
         case 2:
             customer.deleteAccount();
+            flag = false;
             break;
         case 3:
             customer.getData();

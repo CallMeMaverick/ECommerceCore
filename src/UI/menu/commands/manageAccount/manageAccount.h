@@ -6,7 +6,7 @@
 class manageAccount
 {
 public:
-    static void execute(Customer& customer);
+    static void execute(Customer& customer, bool& flag);
     manageAccount() = delete;
     ~manageAccount() = default;
 };
