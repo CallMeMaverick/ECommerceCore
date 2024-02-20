@@ -37,7 +37,7 @@ public:
 
     void printBasket() override;
 
-    void removeFromBasket(uint16_t ID) override;
+    bool removeFromBasket(uint16_t ID) override;
 
     void getData() const override;
 

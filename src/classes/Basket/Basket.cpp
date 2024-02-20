@@ -1,4 +1,5 @@
 #include "Basket.h"
+#include "../../../include/colorCodes/colorCodes.h"
 
 double Basket::amountToPay{ 0 };  // Initialize static variable
 
@@ -9,19 +10,20 @@ void Basket::add_to_basket(Product &product)
 }
 
 
-void Basket::remove_from_basket(uint16_t productID)
+bool Basket::remove_from_basket(uint16_t productID)
 {
     for (int i = 0; i < basket.size(); i++)
     {
         if (basket[i].getProductID() == productID)    // Find the product
         {
             basket.erase(basket.begin() + i); // Delete it from vector
-            return;                                   // Immediately stop the execution
+            return true;                                   // Immediately stop the execution
         }
     }
 
     // Message in case product hasn't been found
-    std::cerr << "Product with such an ID hasn't been found" << std::endl;
+    std::cout << RED_COLOR << "Product with such an ID hasn't been found" << RESET_COLOR << std::endl;
+    return false;
 }
 
 void Basket::view_basket()

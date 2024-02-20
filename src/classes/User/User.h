@@ -69,7 +69,7 @@ public:
      * @brief A pure virtual function for removing items from the user's shopping basket.
      * Implementations should allow a user to remove an item from their basket using Basket class.
      */
-    virtual void removeFromBasket(uint16_t ID) = 0;
+    virtual bool removeFromBasket(uint16_t ID) = 0;
 
     /**
      * A pure virtual function that provides user data.

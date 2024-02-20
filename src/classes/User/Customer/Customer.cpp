@@ -34,9 +34,9 @@ void Customer::printBasket()
     basket.view_basket();
 }
 
-void Customer::removeFromBasket(uint16_t ID)
+bool Customer::removeFromBasket(uint16_t ID)
 {
-    basket.remove_from_basket(ID);
+    return basket.remove_from_basket(ID);
 }
 
 void Customer::getData() const

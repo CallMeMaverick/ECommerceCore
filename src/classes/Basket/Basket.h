@@ -24,7 +24,7 @@ public:
      *        In case product isn't in the basket, shows an appropriate message.
      * @param productID The ID of the product to be removed from the basket.
      */
-    void remove_from_basket(uint16_t productID);
+    bool remove_from_basket(uint16_t productID);
 
     /**
      * @brief Displays the contents of the shopping basket.
