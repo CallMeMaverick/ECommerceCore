@@ -19,7 +19,12 @@ void manageAction::execute(Customer& customer, std::map<std::string, std::vector
         std::cin >> action;
     }
 
-    if      (action == 1) { addItem(customer, mapped, currentCategory); customer.printBasket(); }
+    if (action == 1)
+    {
+        addItem(customer, mapped, currentCategory);
+        customer.printBasket();
+        std::cout << BOLD_TEXT << "Overall amount: " << RESET_COLOR << GREEN_COLOR << Basket::get_overall_amount_to_pay() << RESET_COLOR << std::endl;
+    }
     else if (action == 2) { customer.printBasket(); deleteItem(customer); }
     else if (action == 3) { return; }
 
