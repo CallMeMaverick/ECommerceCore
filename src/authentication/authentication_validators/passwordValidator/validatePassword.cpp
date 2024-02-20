@@ -5,7 +5,7 @@ bool validatePassword(const std::string &password)
 {
     // Password must contain at least 6 characters
     if (password.length() < 6)
-        throw std::invalid_argument("--> Password length must be >= 6");
+        throw std::invalid_argument("Password length must be >= 6");
 
     // Variables for counting properties
     uint16_t lowerCaseCounter        = 0;
@@ -35,7 +35,7 @@ bool validatePassword(const std::string &password)
         }
             // Check if character is a space
         else if (isspace(c)) {
-            throw std::invalid_argument("--> Password cannot contain spaces");
+            throw std::invalid_argument("Password cannot contain spaces");
         }
             // If character does not match any of the above categories, it is considered "other"
         else {
@@ -44,11 +44,11 @@ bool validatePassword(const std::string &password)
     }
 
     if (otherThanSpecialCounter)
-        throw std::invalid_argument("--> Password must contain at least one special character (~@#$%^&*\\)");
+        throw std::invalid_argument("Password must contain at least one special character (~@#$%^&*\\)");
     if (lowerCaseCounter == 0 || upperCaseCounter == 0)
-        throw std::invalid_argument("--> Password must contain both lower- and uppercase characters");
+        throw std::invalid_argument("Password must contain both lower- and uppercase characters");
     if (digitsCounter == 0)
-        throw std::invalid_argument("--> Password must contain digits");
+        throw std::invalid_argument("Password must contain digits");
     if (specialCharsCounter == 0)
 
     return true;
