@@ -1,5 +1,6 @@
 #include "Customer.h"
 #include "../../../authentication/authentication.h"
+#include "../../../../include/colorCodes/colorCodes.h"
 
 class User;
 
@@ -41,9 +42,9 @@ bool Customer::removeFromBasket(uint16_t ID)
 
 void Customer::getData() const
 {
-    std::cout << "username: " << username << std::endl;
-    std::cout << "password: " << password << std::endl;
-    std::cout << "basket address: " << &basket << std::endl;
+    std::cout << CYAN_COLOR << "\nusername: " << RESET_COLOR << username << std::endl;
+    std::cout << CYAN_COLOR << "password: " << RESET_COLOR << password << std::endl;
+    std::cout << CYAN_COLOR << "basket address: " << RESET_COLOR << &basket << std::endl;
 }
 
 Basket* Customer::getBasketAddress()
