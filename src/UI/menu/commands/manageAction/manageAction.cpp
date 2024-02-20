@@ -51,6 +51,13 @@ void manageAction::addItem(Customer &customer, std::map<std::string, std::vector
 
 void manageAction::deleteItem(Customer &customer)
 {
+    Basket *test = customer.getBasketAddress();
+    if (test->getBasketSize() == 0)
+    {
+        std::cout << MAGENTA_COLOR << BOLD_TEXT << "\nBasket is empty; Nothing to manage" << RESET_COLOR << RESET_COLOR << std::endl;
+        return;
+    }
+
     int ID;
     std::cout << "Enter ID of item to delete: ";
     std::cin >> ID;
