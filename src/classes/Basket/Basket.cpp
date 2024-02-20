@@ -16,6 +16,7 @@ bool Basket::remove_from_basket(uint16_t productID)
     {
         if (basket[i].getProductID() == productID)    // Find the product
         {
+            amountToPay -= basket[i].getProductPrice();  // Subtract the price
             basket.erase(basket.begin() + i); // Delete it from vector
             return true;                                   // Immediately stop the execution
         }
