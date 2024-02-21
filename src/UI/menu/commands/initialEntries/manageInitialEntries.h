@@ -47,13 +47,25 @@ public:
     static std::string manageOptionShop();
 
     /**
+     * @brief Prints the basket straightaway form the menu.
+     *
+     * This method allows the user to see the basket from the main menu.
+     *
+     * @param customer A reference to the Customer object for whom the
+     *        basket should be printed.
+     */
+    static void printBasket(Customer& customer);
+
+    /**
      * @brief Manages basket options for the given customer.
      *
      * This method provides interface for managing the basket of a user.
      * User can either remove item from the basket, and get basket's ID.
      * Actions taken within this method affect the provided Customer object directly.
      *
-     * @param customer
+     * @param customer A reference to the Customer object for whom the
+     *        basket management options should be managed. This object may be modified
+     *        based on the user's selections.
      */
     static void manageBasket(Customer& customer);
 
