@@ -45,10 +45,12 @@ void MenuManager::execute()
                 manageAction::execute(customer, mappedCatalog, category);
             }
             else if (entry == 2)
-                manageInitialEntries::manageBasket(customer);                                    // <-- Manage options for basket
+                manageInitialEntries::printBasket(customer);                                    // <-- Manage options for basket
             else if (entry == 3)
-                manageInitialEntries::manageOptionManageAccount(customer, continueExecution); // <-- Manage options for account
+                manageInitialEntries::manageBasket(customer);
             else if (entry == 4)
+                manageInitialEntries::manageOptionManageAccount(customer, continueExecution); // <-- Manage options for account
+            else if (entry == 5)
                 continueExecution = false;                                                          // <-- Stop the execution
         }
     }
