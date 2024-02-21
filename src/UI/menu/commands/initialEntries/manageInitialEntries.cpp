@@ -11,14 +11,15 @@ int manageInitialEntries::execute()
 
     std::cout << std::endl;
     std::cout << BLUE_COLOR << BOLD_TEXT << "1. " << RESET_COLOR << RESET_COLOR << "Shop" << std::endl;
-    std::cout << BLUE_COLOR << BOLD_TEXT << "2. " << RESET_COLOR << RESET_COLOR << "Manage basket" << std::endl;
-    std::cout << BLUE_COLOR << BOLD_TEXT << "3. " << RESET_COLOR << RESET_COLOR << "Manage account" << std::endl;
-    std::cout << BLUE_COLOR << BOLD_TEXT << "4. " << RESET_COLOR << RESET_COLOR << "Exit" << std::endl;
+    std::cout << BLUE_COLOR << BOLD_TEXT << "2. " << RESET_COLOR << RESET_COLOR << "Print basket" << std::endl;
+    std::cout << BLUE_COLOR << BOLD_TEXT << "3. " << RESET_COLOR << RESET_COLOR << "Manage basket" << std::endl;
+    std::cout << BLUE_COLOR << BOLD_TEXT << "4. " << RESET_COLOR << RESET_COLOR << "Manage account" << std::endl;
+    std::cout << BLUE_COLOR << BOLD_TEXT << "5. " << RESET_COLOR << RESET_COLOR << "Exit" << std::endl;
 
     std::cout << "==> ";
     std::cin >> initialEntry;
 
-    while (initialEntry < 1 || initialEntry > 4)
+    while (initialEntry < 1 || initialEntry > 5)
     {
         std::cout << RED_COLOR << "Choose carefully: " << RESET_COLOR;
         std::cin >> initialEntry;
@@ -28,11 +29,26 @@ int manageInitialEntries::execute()
     if (initialEntry == 2) return 2;
     if (initialEntry == 3) return 3;
     if (initialEntry == 4) return 4;
+    if (initialEntry == 5) return 5;
 
 }
 
 
 std::string manageInitialEntries::manageOptionShop() { return shop::execute(); }
+
+void manageInitialEntries::printBasket(Customer &customer)
+{
+    Basket* currentBasket = customer.getBasketAddress();
+
+    if (currentBasket->getBasketSize() == 0)
+        std::cout << MAGENTA_COLOR << BOLD_TEXT << "\nBasket is empty; Nothing to manage" << RESET_COLOR << RESET_COLOR << std::endl;
+    else
+    {
+        std::cout << std::endl;
+        customer.printBasket();
+        std::cout << RED_COLOR << BOLD_TEXT << "Total: " << RESET_COLOR << RESET_COLOR << GREEN_COLOR << currentBasket->get_overall_amount_to_pay() << RESET_COLOR << std::endl;
+    }
+}
 
 void manageInitialEntries::manageBasket(Customer &customer)
 {
