@@ -54,6 +54,19 @@ namespace authentication
             userData[std::string(1, username[0])] = json::array();
         }
 
+        // Check for already existing username
+        for (auto& [key, value] : userData.items())
+        {
+            for (const auto& user : value)
+            {
+                if (user["username"] == username)
+                {
+                    std::cerr << "User with such a name already exists" << std::endl;
+                    return false;
+                }
+            }
+        }
+
         // Add the new user's username and password to the userData.
         userData[std::string(1, username[0])].push_back({ { "username", username }, { "password", password } });
 
