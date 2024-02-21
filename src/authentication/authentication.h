@@ -11,7 +11,7 @@ namespace authentication
      * @param username The username of the new user. It must be unique among all users.
      * @param password The password for the new user. It should meet the security criteria.
      */
-    void signUp(const std::string &username, const std::string &password);
+    bool signUp(const std::string &username, const std::string &password);
 
     /**
      * @brief Authenticates a user by comparing the provided credentials against those in a JSON file.

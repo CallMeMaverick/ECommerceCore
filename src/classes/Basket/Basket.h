@@ -24,7 +24,7 @@ public:
      *        In case product isn't in the basket, shows an appropriate message.
      * @param productID The ID of the product to be removed from the basket.
      */
-    void remove_from_basket(uint16_t productID);
+    bool remove_from_basket(uint16_t productID);
 
     /**
      * @brief Displays the contents of the shopping basket.
@@ -32,10 +32,17 @@ public:
     void view_basket();
 
     /**
+     * @brief Displays the contents of the shopping basket in a styled way.
+     */
+    void view_basket_for_removing();
+
+    /**
      * @brief Calculates the total cost of the items in the shopping basket.
      * @return The total cost of all products in the basket as a double.
      */
     static double get_overall_amount_to_pay();
+
+    int getBasketSize() const;
 };
 
 

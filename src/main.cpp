@@ -1,10 +1,7 @@
-#include "classes/Catalog/Catalog.h"
-#include "services/catalogLoader/loadCatalog.h"
+#include "UI/menu/MenuManager/MenuManager.h"
 
 int main()
 {
-    Catalog catalog = loadCatalog();
-    catalog.print_catalog();
-
+    MenuManager::execute();
     return 0;
 }

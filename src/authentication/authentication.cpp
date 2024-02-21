@@ -9,23 +9,21 @@ using json = nlohmann::json;
 
 namespace authentication
 {
-    void signUp(const std::string& username, const std::string &password)
+    bool signUp(const std::string& username, const std::string &password)
     {
         // Validate name before proceeding
         try {
             validateName(username);
         }
         catch (std::invalid_argument& nameException) {
-            std::cout << nameException.what() << std::endl;
-            throw;
+            throw nameException;
         }
 
         try {
             validatePassword(password);
         }
         catch (std::invalid_argument& passwordException) {
-            std::cout << passwordException.what() << std::endl;
-            throw;
+            throw passwordException;
         }
 
 
@@ -46,7 +44,6 @@ namespace authentication
             }
             catch (json::parse_error& e)
             {
-                // If there's a parse error, assume the file was empty or corrupted and start with a new JSON object.
                 userData = json::object(); // Initialize userData as an empty object.
             }
         }
@@ -57,17 +54,35 @@ namespace authentication
             userData[std::string(1, username[0])] = json::array();
         }
 
+        // Check for already existing username
+        for (auto& [key, value] : userData.items())
+        {
+            for (const auto& user : value)
+            {
+                if (user["username"] == username)
+                {
+                    std::cerr << "User with such a name already exists" << std::endl;
+                    return false;
+                }
+            }
+        }
+
         // Add the new user's username and password to the userData.
         userData[std::string(1, username[0])].push_back({ { "username", username }, { "password", password } });
 
         // Open the file in write mode to save the updated userData.
         std::ofstream outputJson(filePath);
         if (!outputJson.is_open())
+        {
             throw std::runtime_error("Could not open file for writing");
+        }
+
 
         // Write the updated userData back to the file.
         outputJson << userData.dump(4);
         outputJson.close();
+
+        return true;
     }
 
     bool logIn(const std::string &username, const std::string &password)
@@ -110,7 +125,6 @@ namespace authentication
                     {
                         if (userData["username"] == username && userData["password"] == password)
                         {
-                            std::cout << "Found" << std::endl;
                             return true;  // <-- return true if user has been found
                         }
                     }
